@@ -3,7 +3,8 @@ class TwootsController < ApplicationController
 
   # GET /twoots or /twoots.json
   def index
-    @twoots = Twoot.all
+    @twoots = Twoot.all.order("created_at DESC")
+    @twoot = Twoot.new
   end
 
   # GET /twoots/1 or /twoots/1.json

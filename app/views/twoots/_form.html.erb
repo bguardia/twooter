@@ -1,22 +1,10 @@
-<%= form_with(model: twoot) do |form| %>
-  <% if twoot.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(twoot.errors.count, "error") %> prohibited this twoot from being saved:</h2>
-
-      <ul>
-        <% twoot.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
+<%= simple_form_for(@twoot) do |f| %>
+<%= f.error_notification %>
   <div class="field">
-    <%= form.label :body %>
-    <%= form.text_area :body %>
+    <div class="control">
+      <%= f.input :body, label: "Twoot about it", input_html: { class: "textarea " }, wrapper: false, 
+      label_html: { class: "label" }, placeholder: "Compose your twoot..." %>
+    </div>
   </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= f.button :submit, class: "button is-info" %>
 <% end %>

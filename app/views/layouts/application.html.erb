@@ -7,20 +7,48 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/bcdbdb9739.js" crossorigin="anonymous"></script>
+
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   </head>
 
   <body>
    <% if flash[:notice] %>
-     <div class="notification if-primary global_notification">
-     <p class="notice"><%= flash[:notice] %>
+     <div class="notification is-primary global_notification">
+     <p class="notice"><%= notice %></p>
      </div>
     <% end %>
+
     <% if flash[:alert] %>
     <div class="notification is-danger global_notification">
-      <p class="alert"><%= flash[:alert] %></p>
+      <p class="alert"><%= alert %></p>
     </div>
     <% end %>
+
+    <nav class="navbar is-info">
+      <div class="navbar-brand">
+      <%= link_to root_path, class: "navbar-item" do %>
+        <h1 class="title is-5">Twooter</h1>
+      <% end %>
+      </div>
+
+      <div class="navbar-burger burger" data-target="navbarExample">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <div id="navbarExample" class="navbar-menu">
+        <div class="navbar-end">
+          <div class="field is-grouped">
+            <p class="control">
+              <%= link_to "New Twoot", new_twoot_path, class: "button is-info is-inverted" %>
+              </p>
+          </div>
+        </div>
+      </div>
+    </nav>
     <%= yield %>
   </body>
 </html>
