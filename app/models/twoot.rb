@@ -1,0 +1,2 @@
+class Twoot < ApplicationRecord
+end
