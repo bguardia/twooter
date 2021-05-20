@@ -1,6 +1,7 @@
 class TwootsController < ApplicationController
   before_action :set_twoot, only: %i[ show edit update destroy ]
-
+  before_action :authenticate_user!, except: [:index, :show]
+  
   # GET /twoots or /twoots.json
   def index
     @twoots = Twoot.all.order("created_at DESC")
@@ -13,7 +14,7 @@ class TwootsController < ApplicationController
 
   # GET /twoots/new
   def new
-    @twoot = Twoot.new
+    @twoot = current_user.twoots.build
   end
 
   # GET /twoots/1/edit
@@ -22,7 +23,7 @@ class TwootsController < ApplicationController
 
   # POST /twoots or /twoots.json
   def create
-    @twoot = Twoot.new(twoot_params)
+    @twoot = current_user.twoots.build(twoot_params)
 
     respond_to do |format|
       if @twoot.save
