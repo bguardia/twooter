@@ -1,52 +1,40 @@
 <div class="column">
+  <% if user_signed_in? %>
   <nav class="panel">
     <p class="panel-heading">Who to Follow</p>
   </nav>
-  <div class="panel-block">
-    <article class="media">
-      <div class="media-left">
-        <figure class="image is-32x32">
-          <img src="https:/bulma.io/images/placeholders/64x64.png">
-        </figure>
-      </div>
-      <div class="media-content">
-        <div class="content">
-          <strong>Jorgen Blorgen</strong>
-          <small>@jorblor</small>
+  <% suggestions = Follow.suggestions_for(current_user.id) %>
+  <% unless suggestions.empty? %>
+  <% suggestions.each do |user| %>
+    <div class="panel-block">
+      <article class="media">
+        <div class="media-left">
+          <figure class="image is-32x32">
+            <img src="https:/bulma.io/images/placeholders/64x64.png">
+          </figure>
         </div>
-      </div>
-    </article>
-  </div>
-
-  <div class="panel-block">
-    <article class="media">
-      <div class="media-left">
-        <figure class="image is-32x32">
-          <img src="https:/bulma.io/images/placeholders/64x64.png">
-        </figure>
-      </div>
-      <div class="media-content">
-        <div class="content">
-          <strong>Jorgen Blorgen</strong>
-          <small>@jorblor</small>
+        <div class="media-content">
+          <div class="content">
+            <strong><%= user.name %></strong>
+            <small><%= user.handle %></small>
+          </div>
         </div>
-      </div>
-    </article>
-  </div>
-
-  <div class="panel-block">
-    <article class="media">
-      <div class="media-left">
-        <figure class="image is-32x32">
-          <img src="https:/bulma.io/images/placeholders/64x64.png">
-        </figure>
-      </div>
-      <div class="media-content">
-        <div class="content">
-          <strong>Jorgen Blorgen</strong>
-          <small>@jorblor</small>
+        <div class="media-right">
+          <%= link_to "Follow", "follow/user/#{user.id}", class: "button is-info"  %>
         </div>
-      </div>
-    </article>
-  </div>
+      </article>
+    </div>
+  <% end %>
+  <% else %>
+     <div class="panel-block">
+      <article class="media">
+        <div class="media-content">
+          <div class="content">
+            <small>Looks like there's no one to follow right now.</small>
+          </div>
+        </div>
+      </article>
+    </div>
+  <% end %>
+  <% end %>
 </div>

@@ -10,7 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_20_124816) do
+ActiveRecord::Schema.define(version: 2021_05_21_005641) do
+
+  create_table "follows", force: :cascade do |t|
+    t.integer "follower_id"
+    t.integer "followed_id"
+  end
 
   create_table "likes", force: :cascade do |t|
     t.integer "twoot_id"
@@ -41,4 +46,6 @@ ActiveRecord::Schema.define(version: 2021_05_20_124816) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "follows", "users", column: "followed_id"
+  add_foreign_key "follows", "users", column: "follower_id"
 end

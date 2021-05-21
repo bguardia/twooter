@@ -6,4 +6,16 @@ class User < ApplicationRecord
 
   has_many :twoots
   has_many :likes
+  
+  def followers
+    Follow.all.where("followed_id=#{self.id}")
+  end
+
+  def follows
+    Follow.all.where("follower_id=#{self.id}")
+  end
+
+  def handle
+    "@#{self.username}"
+  end
 end
