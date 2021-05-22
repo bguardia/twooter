@@ -7,12 +7,17 @@
       </p>
     </figure>
     <div class="media-content">
-      <%= render 'form' %>
+      <%= render 'form', twoot: @twoot, twoot_label: "Twoot about it" %>
     </div>
     </article>
     <% end %>
 
 <% @twoots.each do |twoot| %>
+  <div class="box">
   <%= render 'twoot', twoot: twoot %>
+  <% twoot.replies.each do |reply| %>
+    <%= render 'twoot', twoot: reply %>
+  <% end %>
+  </div>
 <% end %>
 </div>

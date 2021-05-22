@@ -9,4 +9,15 @@ class Twoot < ApplicationRecord
     end
   end
 
+  def replies
+    Twoot.where("reply_id=#{self.id}")
+  end
+
+  def reply?
+    !self.reply_id.nil? && Twoot.exists?(id: self.reply_id)
+  end
+
+  def replying_to
+    Twoot.find_by(id: self.reply_id) if self.reply?
+  end
 end

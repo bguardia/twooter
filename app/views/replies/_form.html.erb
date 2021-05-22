@@ -1,5 +1,6 @@
-<%= simple_form_for(twoot) do |f| %>
-<%= f.error_notification %>
+<%= simple_form_for :twoot, url: "../", remote: true, authenticity_token: true do |f| %>
+  <%= f.error_notification %>
+  <%= f.hidden_field :reply_id, value: "#{local_assigns[:reply_id]}" %>
   <div class="field">
     <div class="control">
       <%= f.input :body, label: twoot_label, input_html: { class: "textarea " }, wrapper: false, 

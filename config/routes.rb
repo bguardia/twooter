@@ -9,7 +9,11 @@ Rails.application.routes.draw do
   # follows
   get "follow/user/:followed_id", to: "follows#create"
   delete "unfollow/user/:followed_id", to: "follows#delete"
-  
+
+  #replies
+  get "reply/twoot/:reply_id", to: "replies#new"
+  post "reply", to: "replies#create"
+
   # resources :likes, only: [:create, :destroy]
   root "twoots#index"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

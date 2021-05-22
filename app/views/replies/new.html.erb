@@ -1,0 +1,12 @@
+<section class="section">
+<div class="container">
+<div class="columns">
+<div class="column is-half">
+<%= render 'twoots/twoot', twoot: @reply_to %>
+<%= render 'form', twoot: @reply, twoot_label: "Replying to #{@reply_user_handle}", reply_id: @reply_to.id %>
+</div>
+</div>
+</div>
+</section>
+
+

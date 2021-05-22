@@ -1,5 +1,4 @@
 <% twooter = twoot.user %>
-  <div class="box">
     <div class="panel-block">
       <article class="media">
         <div class="media-left">
@@ -11,6 +10,11 @@
           <div class="content">
             <strong><%= twooter.name %></strong><br />
             <small>@<%= twooter.username %></small>
+            <% if twoot.reply? %>
+              <% parent_twoot = twoot.replying_to %>
+              <% parent_user = User.find(parent_twoot.user_id) %>
+              <br/><small>Replying to</small><span><%= link_to parent_user.handle, "#" %></span>
+            <% end %>
             <p><%= twoot.body %></p>
           </div>
         </div>
@@ -26,6 +30,12 @@
     </div>
 
   <nav class="level panel-block">
+    <div class="level-item has-text-centered">
+      <%= link_to "reply/twoot/#{twoot.id}", class: "level-item" do %>
+        <span class="icon"><i class="far fa-comment" aria-hidden="true"></i></span>
+      <% end %>
+    </div>
+
     <div class="level-item has-text-centered">
       <%= link_to twoot, class: "level-item" do %>
         <span class="icon"><i class="fa fa-link" aria-hidden="true"></i></span>
@@ -56,6 +66,5 @@
         <% end %>
       </div>
     <% end %>
-    
   </nav>
-</div>
+
