@@ -15,7 +15,7 @@
             <% if twoot.reply? %>
               <% parent_twoot = twoot.replying_to %>
               <% parent_user = User.find(parent_twoot.user_id) %>
-              <br/><small>Replying to</small><span><%= link_to parent_user.handle, user_path(parent_user.id) %></span>
+              <br/><small>Replying to</small><span><%= link_to parent_user.handle, user_url(parent_user.id) %></span>
             <% end %>
             <p><%= twoot.body %></p>
           </div>
@@ -33,7 +33,7 @@
 
   <nav class="level panel-block">
     <div class="level-item has-text-centered">
-      <%= link_to "reply/twoot/#{twoot.id}", class: "level-item" do %>
+      <%= link_to new_reply_url(reply_id: twoot.id), class: "level-item" do %>
         <span class="icon"><i class="far fa-comment" aria-hidden="true"></i></span>
       <% end %>
     </div>
@@ -46,11 +46,11 @@
 
     <div class="level-item has-text-centered">
       <% if current_user && twoot.liked_by?(current_user.id) %>
-        <%= link_to "unlike/twoot/#{twoot.id}", method: :delete, class:"level-item" do %>
+        <%= link_to unlike_url(twoot.id), method: :delete, class:"level-item" do %>
           <span class="icon"><i class="fas fa-heart"></i></span>
         <% end %>
       <% else %>
-        <%= link_to "like/twoot/#{twoot.id}", class:"level-item" do %>
+        <%= link_to like_url(twoot.id), class:"level-item" do %>
           <span class="icon"><i class="far fa-heart" aria-hidden="true"></i></span>
         <% end %>
       <% end %>
@@ -58,7 +58,7 @@
 
     <% if user_signed_in? && twoot.user == current_user %>
       <div class="level-item has-text-centered">
-        <%= link_to edit_twoot_path(twoot), class: "level-item" do %>
+        <%= link_to edit_twoot_url(twoot), class: "level-item" do %>
           <span class="icon"><i class="fa fa-pencil" aria-hidden="true"></i></span>
         <% end %>
       </div>

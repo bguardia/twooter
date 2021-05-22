@@ -1,4 +1,4 @@
-<%= simple_form_for :twoot, url: "../", remote: true, authenticity_token: true do |f| %>
+<%= simple_form_for :twoot, url: replies_url, remote: true, authenticity_token: true do |f| %>
   <%= f.error_notification %>
   <%= f.hidden_field :reply_id, value: "#{local_assigns[:reply_id]}" %>
   <div class="field">
