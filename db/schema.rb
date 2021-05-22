@@ -12,14 +12,17 @@
 
 ActiveRecord::Schema.define(version: 2021_05_22_083852) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "follows", force: :cascade do |t|
     t.integer "follower_id"
     t.integer "followed_id"
   end
 
   create_table "likes", force: :cascade do |t|
-    t.integer "twoot_id"
-    t.integer "user_id"
+    t.bigint "twoot_id"
+    t.bigint "user_id"
     t.index ["twoot_id"], name: "index_likes_on_twoot_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
