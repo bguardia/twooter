@@ -9,10 +9,12 @@
           </figure>
         </div>
         <div>
-          <% if user_signed_in? && current_user.follows?(user.id)%>
-            <%= link_to 'Unfollow', "../unfollow/user/#{user.id}", method: :delete, class: "button is-info is-inverted" %>
-          <% else %>
-            <%= link_to 'Follow', "../follow/user/#{user.id}", class: "button is-info" %>
+          <% if user_signed_in? && current_user != user %>
+            <% if current_user.follows?(user.id)%>
+                <%= link_to 'Unfollow', "../unfollow/user/#{user.id}", method: :delete, class: "button is-info is-inverted" %>
+            <% else %>
+                <%= link_to 'Follow', "../follow/user/#{user.id}", class: "button is-info" %>
+            <% end %>
           <% end %>
         </div>
     </div>
@@ -25,7 +27,7 @@
                 <small>@<%= user.username %></small>
                 </p>
                 <p>
-                A cool dude doing cool things all the time. Was too cool for school and now too cool to have a real job.
+                <% user.bio %>
                 </p>
             </div>
             </div>
