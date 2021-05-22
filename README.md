@@ -14,9 +14,12 @@ Twooter has the following functionality:
 <ul>
   <li>User registration, deletion and sessions (through Devise Gem)</li>
   <li>Twoot (post) creation, deletion and editing</li>
-  <li>The ability to like twoots.</li>
-  <li>The ability to unlike liked twoots.</li>
-  <li>The ability to follow other users.</li>
-  <li>The ability to reply to other twoots.</li>
+  <li>The ability to like and unlike twoots</li>
+  <li>The ability to follow/unfollow other users</li>
+  <li>The ability to reply to other twoots</li>
 </ul>
 
+<h2>Try it out</h2>
+<p>
+Twooter can be accessed via Heroku <a href="https://floating-lowlands-92022.herokuapp.com/" target="_blank">here</a>.
+</p>
