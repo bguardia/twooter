@@ -13,11 +13,6 @@
     <% end %>
 
 <% @twoots.each do |twoot| %>
-  <div class="box">
-  <%= render 'twoot', twoot: twoot %>
-  <% twoot.replies.each do |reply| %>
-    <%= render 'twoot', twoot: reply %>
-  <% end %>
-  </div>
+  <%= render 'twoot_with_replies', twoot: twoot %>
 <% end %>
 </div>
