@@ -1,24 +1,22 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+<h1>Twooter</h1>
 
-Things you may want to cover:
+<p>
+Twooter is a light Twitter clone based on <a href="https://github.com/justalever/twittter" target="_blank">justalever's Twittter</a> built in Ruby on Rails. The Let's Build series covered user management and post creation utilizing a number of handy gems, including Devise, Bulma and Simple Form. Twooter takes things just a step further, including some other functionality such as user follows and twoot replies.
+</p>
 
-* Ruby version
+<h2>Functionality</h2>
+<p>
+Twooter has the following functionality:
+</p>
 
-* System dependencies
+<ul>
+  <li>User registration, deletion and sessions (through Devise Gem)</li>
+  <li>Twoot (post) creation, deletion and editing</li>
+  <li>The ability to like twoots.</li>
+  <li>The ability to unlike liked twoots.</li>
+  <li>The ability to follow other users.</li>
+  <li>The ability to reply to other twoots.</li>
+</ul>
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
