@@ -15,6 +15,10 @@ class User < ApplicationRecord
     Follow.all.where("follower_id=#{self.id}")
   end
 
+  def follows?(user_id)
+    follows.exists?(followed_id: user_id)
+  end
+
   def handle
     "@#{self.username}"
   end

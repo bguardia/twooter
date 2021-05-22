@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => { registrations: 'registrations'}
   resources :twoots
+  
+  #viewing users
+  resources :users, only: [:show]
 
   # likes
   get "like/twoot/:twoot_id", to: "likes#create"
@@ -8,7 +11,7 @@ Rails.application.routes.draw do
 
   # follows
   get "follow/user/:followed_id", to: "follows#create"
-  delete "unfollow/user/:followed_id", to: "follows#delete"
+  delete "unfollow/user/:followed_id", to: "follows#destroy"
 
   #replies
   get "reply/twoot/:reply_id", to: "replies#new"

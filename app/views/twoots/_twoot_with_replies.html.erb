@@ -1,6 +1,6 @@
 <div class="box">
-  <%= render 'twoot', twoot: twoot %>
+  <%= render 'twoots/twoot', twoot: twoot %>
   <% twoot.replies.each do |reply| %>
-      <%= render 'twoot', twoot: reply %>
+      <%= render 'twoots/twoot', twoot: reply %>
     <% end %>
 </div>

@@ -1,0 +1,58 @@
+<nav class="panel">
+    <p class="panel-heading">
+      Profile
+    </p>
+    <div class="panel-block is-justify-content-space-between">
+        <div>
+          <figure class="image is-64x64">
+            <%= gravatar_image_tag(user.email, size: 64, alt: user.name) %>
+          </figure>
+        </div>
+        <div>
+          <% if user_signed_in? && current_user.follows?(user.id)%>
+            <%= link_to 'Unfollow', "../unfollow/user/#{user.id}", method: :delete, class: "button is-info is-inverted" %>
+          <% else %>
+            <%= link_to 'Follow', "../follow/user/#{user.id}", class: "button is-info" %>
+          <% end %>
+        </div>
+    </div>
+      <div class="panel-block">
+        <article class="media">
+            <div class="media-content">
+            <div class="content">
+                <p>
+                <strong><%= user.name %></strong><br />
+                <small>@<%= user.username %></small>
+                </p>
+                <p>
+                A cool dude doing cool things all the time. Was too cool for school and now too cool to have a real job.
+                </p>
+            </div>
+            </div>
+        </article>
+      </div>
+    
+
+    <div class="panel-block">
+      <div class="level is-mobile">
+      <div class="level-item has-centered-text">
+        <div>
+          <p class="heading">Twoots</p>
+          <p class="title is-6"><%= user.twoots.count %></p>
+        </div>
+      </div>
+      <div class="level-item has-centered-text">
+        <div>
+          <p class="heading">Following</p>
+          <p class="title is-6"><%= user.follows.count %></p>
+        </div>
+      </div>
+      <div class="level-item has-centered-text">
+        <div>
+          <p class="heading">Followers</p>
+          <p class="title is-6"><%= user.followers.count %></p>
+        </div>
+      </div>
+      </div>
+    </div>
+  </nav>

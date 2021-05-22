@@ -8,12 +8,14 @@
         </div>
         <div class="media-content">
           <div class="content">
+          <%= link_to user_path(twooter) do %>
             <strong><%= twooter.name %></strong><br />
             <small>@<%= twooter.username %></small>
+            <% end %>
             <% if twoot.reply? %>
               <% parent_twoot = twoot.replying_to %>
               <% parent_user = User.find(parent_twoot.user_id) %>
-              <br/><small>Replying to</small><span><%= link_to parent_user.handle, "#" %></span>
+              <br/><small>Replying to</small><span><%= link_to parent_user.handle, user_path(parent_user.id) %></span>
             <% end %>
             <p><%= twoot.body %></p>
           </div>
