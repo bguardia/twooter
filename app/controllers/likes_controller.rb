@@ -6,17 +6,21 @@ class LikesController < ApplicationController
       @like = Like.new(like_params)
       unless Like.find_by(like_params)
         @like.save
-        flash[:notice] = "Successfuly liked twoot!"
+        #flash[:notice] = "Successfuly liked twoot!"
       else
-        flash[:alert] = "You've already liked that twoot!"
+        #flash[:alert] = "You've already liked that twoot!"
       end
-      redirect_to root_path
+
+      #render partial:'likes/icon', locals: { twoot: Twoot.find(params[:twoot_id]) }
+      #redirect_to root_path
     end
 
     def destroy
       like_params = { twoot_id: params[:twoot_id], user_id: current_user.id }
       @like = Like.find_by(like_params)
       @like.destroy
-      redirect_to root_path
+
+      #render partial:'likes/icon', locals: { twoot: Twoot.find(params[:twoot_id]) }
+      #redirect_to root_path
     end
 end

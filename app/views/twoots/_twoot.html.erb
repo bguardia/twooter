@@ -46,11 +46,14 @@
 
     <div class="level-item has-text-centered">
       <% if current_user && twoot.liked_by?(current_user.id) %>
-        <%= link_to unlike_url(twoot.id), method: :delete, class:"level-item" do %>
+        <%= link_to unlike_url(twoot.id), remote: true, method: :delete, class:"unlike_link level-item", data: { twoot_id: twoot.id } do %>
           <span class="icon"><i class="fas fa-heart"></i></span>
         <% end %>
       <% else %>
-        <%= link_to like_url(twoot.id), class:"level-item" do %>
+        <%= link_to "/like/twoot", class:"like_link level-item", 
+                    remote: true, 
+                    method: :post, 
+                    data: { params: "twoot_id=#{twoot.id}", twoot_id: twoot.id } do %>
           <span class="icon"><i class="far fa-heart" aria-hidden="true"></i></span>
         <% end %>
       <% end %>

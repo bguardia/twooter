@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   # likes
   get "like/twoot/:twoot_id", to: "likes#create", as: :like
+  post "like/twoot", to: "likes#create"
   delete "unlike/twoot/:twoot_id", to: "likes#destroy", as: :unlike
 
   # follows
